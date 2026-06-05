@@ -24,81 +24,92 @@ body{
   color:var(--ink);font-family:"Archivo",system-ui,sans-serif;line-height:1.5;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:860px;margin:0 auto;padding:40px 22px 80px}
-header h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(28px,5vw,44px);
+.wrap{max-width:720px;margin:0 auto;padding:40px 22px 80px}
+header h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(28px,5vw,42px);
   margin:0;letter-spacing:-.02em;line-height:1.02}
 header h1 .g{color:var(--gold)}
-header p{color:var(--muted);margin:.4rem 0 0;max-width:60ch}
-.num{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+header p{color:var(--muted);margin:.4rem 0 0;max-width:58ch;font-size:14px}
 .card{
   background:linear-gradient(180deg,var(--panel),var(--panel2));
   border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-top:20px;
   box-shadow:0 1px 0 rgba(255,255,255,.02) inset,0 18px 40px -28px #000;
 }
-.card h2{font-family:"Fraunces",serif;font-weight:600;font-size:18px;margin:0 0 4px}
-.card .sub{color:var(--muted);font-size:13px;margin:0 0 18px}
-label{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:0 0 5px}
-input,select,textarea{
+.card h2{font-family:"Fraunces",serif;font-weight:600;font-size:18px;margin:0 0 18px}
+label{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin:0 0 5px}
+input,select{
   width:100%;background:#0c120f;border:1px solid var(--line);color:var(--ink);
-  border-radius:9px;padding:10px 12px;font-family:inherit;font-size:14px;outline:none;
+  border-radius:9px;padding:10px 13px;font-family:inherit;font-size:14px;outline:none;
   transition:border-color .15s,box-shadow .15s;
 }
-input:focus,select:focus,textarea:focus{border-color:var(--gold-dim);box-shadow:0 0 0 3px rgba(216,179,101,.12)}
-input[readonly]{opacity:.65;cursor:default}
+input:focus,select:focus{border-color:var(--gold-dim);box-shadow:0 0 0 3px rgba(216,179,101,.12)}
+input[readonly]{opacity:.6;cursor:default}
 .row{display:flex;gap:12px;flex-wrap:wrap}
-.row>div{flex:1;min-width:130px}
+.row>div{flex:1;min-width:120px}
+.field{margin-top:14px}
 button{
   cursor:pointer;border:1px solid var(--line);background:#0c120f;color:var(--ink);
   border-radius:9px;padding:10px 16px;font-family:inherit;font-size:14px;font-weight:500;
   transition:.15s;white-space:nowrap;
 }
 button:hover{border-color:var(--gold-dim);transform:translateY(-1px)}
-button.primary{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:600}
-button.primary:hover{filter:brightness(1.05)}
-button.ghost{background:transparent}
-button.tiny{padding:5px 9px;font-size:12px}
-/* Segmented choice buttons */
+button.primary{background:var(--gold);color:#1a140a;border-color:var(--gold);font-weight:700;font-size:15px;padding:12px 24px}
+button.primary:hover{filter:brightness(1.06)}
+button.ghost{background:transparent;border-color:transparent}
+button.tiny{padding:5px 10px;font-size:12px}
 .seg-group{display:flex;gap:8px;flex-wrap:wrap}
-.seg-group button{flex:1;min-width:120px;padding:10px 14px;font-size:13px;text-align:center}
-.seg-group button.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.seg-group button{flex:1;min-width:100px;padding:10px 12px;font-size:13px}
+.seg-group button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
 .divider{height:1px;background:var(--line);margin:20px 0}
-.hint{
-  font-size:12.5px;color:var(--muted);background:#0c120f;border:1px solid var(--line);
-  border-left:3px solid var(--gold-dim);border-radius:8px;padding:10px 12px;margin-top:12px;
+.calc{
+  display:flex;gap:0;background:#0c120f;border:1px solid var(--gold-dim);
+  border-radius:9px;overflow:hidden;margin-top:12px;
 }
-.status{font-size:13px;margin-top:10px;min-height:18px}
-.status.ok{color:var(--pos)}.status.err{color:var(--neg)}
-.calc-box{
-  display:flex;align-items:center;justify-content:space-between;
-  background:#0c120f;border:1px solid var(--gold-dim);border-radius:9px;
-  padding:12px 16px;margin-top:12px;
+.calc-item{flex:1;padding:12px 16px;border-right:1px solid var(--line)}
+.calc-item:last-child{border-right:none}
+.calc-item .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.calc-item .v{font-family:"JetBrains Mono",monospace;font-size:18px;color:var(--gold);margin-top:3px}
+.status{font-size:13px;margin-top:12px;min-height:18px;line-height:1.4}
+.status.ok{color:var(--pos)}.status.err{color:var(--neg)}.status.info{color:var(--muted)}
+.badge{font-size:10px;border:1px solid var(--gold-dim);border-radius:999px;
+  padding:2px 7px;color:var(--gold);vertical-align:middle;margin-left:5px}
+/* Item de aporte */
+.aporte-item{
+  border:1px solid var(--line);border-radius:11px;padding:20px;margin-bottom:12px;
+  background:rgba(12,18,15,.5);
 }
-.calc-box .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.calc-box .v{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--gold);margin-top:2px}
-.badge{font-size:11px;border:1px solid var(--gold-dim);border-radius:999px;padding:2px 8px;color:var(--gold);margin-left:6px}
-details summary{cursor:pointer;color:var(--muted);font-size:13px;user-select:none}
-details[open] summary{color:var(--ink);margin-bottom:16px}
-pre{
-  background:#0a0e0c;border:1px solid var(--line);border-radius:10px;padding:14px;overflow:auto;
-  font-family:"JetBrains Mono",monospace;font-size:12px;max-height:200px;margin:10px 0 0;
+.aporte-item:last-child{margin-bottom:0}
+.item-header{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;
 }
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.hist-item{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
-  padding:11px 4px;border-bottom:1px solid rgba(36,48,41,.5);font-size:13px;
+.item-num{font-family:"Fraunces",serif;font-size:14px;font-weight:600;color:var(--muted)}
+.btn-remove{color:var(--neg);font-size:12px;padding:4px 8px;border-color:transparent;background:transparent}
+.btn-remove:hover{border-color:var(--neg);transform:none}
+/* Separador entre itens */
+.items-divider{
+  display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--muted);font-size:12px;
 }
-.hist-item:last-child{border-bottom:none}
-.hist-item .meta{color:var(--muted);font-size:11px;margin-top:2px}
-.hist-item .val{font-family:"JetBrains Mono",monospace;color:var(--gold);white-space:nowrap}
-.hist-item .date{color:var(--muted);font-size:11px;margin-top:2px;text-align:right}
-.field-group{animation:fadeIn .18s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.foot{color:var(--muted);font-size:12px;margin-top:26px;text-align:center;line-height:1.6}
-@media(max-width:640px){
-  .grid2{grid-template-columns:1fr}
-  .seg-group button{min-width:80px}
+.items-divider::before,.items-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+/* Ações do formulário */
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:20px}
+.btn-add{
+  display:flex;align-items:center;gap:6px;font-size:14px;
+  border:1px dashed var(--gold-dim);color:var(--gold);background:transparent;
+  border-radius:9px;padding:10px 16px;
 }
+.btn-add:hover{background:rgba(216,179,101,.06);border-style:solid;transform:none}
+/* Histórico */
+.hist-row{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 2px;border-bottom:1px solid rgba(36,48,41,.5);font-size:13px}
+.hist-row:last-child{border-bottom:none}
+.hist-row .v{font-family:"JetBrains Mono",monospace;color:var(--gold);text-align:right;white-space:nowrap}
+.hist-row .d{color:var(--muted);font-size:11px;text-align:right}
+/* Config */
+details summary{cursor:pointer;color:var(--muted);font-size:13px;user-select:none;padding:2px 0}
+details[open] summary{color:var(--ink);margin-bottom:14px}
+.fade{animation:fi .2s ease}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.foot{color:var(--muted);font-size:12px;margin-top:28px;text-align:center;line-height:1.7}
+@media(max-width:560px){.seg-group button{min-width:80px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -106,81 +117,123 @@ pre{
 
   <header>
     <h1>Registrar <span class="g">Aporte</span></h1>
-    <p>Documente seus investimentos. Os dados ficam no seu repositório privado via API do GitHub.</p>
+    <p>Preencha o formulário e clique em Registrar — os arquivos JSON são atualizados direto no GitHub.</p>
   </header>
 
-  <!-- CONFIGURAÇÃO (colapsável) -->
+  <!-- CONFIGURAÇÃO -->
   <section class="card">
-    <details id="configDetails">
-      <summary>⚙ Configuração — repositório e token do GitHub</summary>
+    <details id="cfgDetails">
+      <summary>⚙ Configuração do repositório</summary>
       <div class="row">
-        <div><label>Usuário / Org</label><input id="ghOwner" placeholder="seu-usuario"></div>
-        <div><label>Repositório</label><input id="ghRepo" placeholder="Agente-de-Investimentos"></div>
-        <div><label>Branch</label><input id="ghBranch" value="main"></div>
+        <div><label>Usuário GitHub</label><input id="cfgOwner" placeholder="seu-usuario"></div>
+        <div><label>Repositório (privado)</label><input id="cfgRepo" placeholder="Agente-de-Investimentos"></div>
+        <div><label>Branch</label><input id="cfgBranch" value="main"></div>
       </div>
-      <div class="row" style="margin-top:10px">
-        <div><label>Caminho carteira.json</label><input id="ghPathCart" value="carteira.json"></div>
-        <div><label>Caminho historico.json</label><input id="ghPathHist" value="historico.json"></div>
-      </div>
-      <div style="margin-top:12px">
-        <label>GitHub Token <span class="badge">fine-grained · Contents: read + write · só neste repo</span></label>
-        <input id="ghToken" type="password" placeholder="github_pat_... ou ghp_...">
-        <p style="font-size:12px;color:var(--muted);margin:6px 0 0">O token fica somente no seu navegador (localStorage) — nunca vai para o git.</p>
+      <div class="field">
+        <label>Token do GitHub <span class="badge">fine-grained · Contents read+write · só neste repo</span></label>
+        <input id="cfgToken" type="password" placeholder="github_pat_... ou ghp_...">
+        <p style="font-size:12px;color:var(--muted);margin:5px 0 0">Fica só no seu navegador (localStorage). Nunca vai para o git.</p>
       </div>
     </details>
   </section>
 
-  <!-- 1. CARREGAR -->
+  <!-- FORMULÁRIO DE APORTES -->
   <section class="card">
-    <h2>1. Carregar dados</h2>
-    <p class="sub">Carregue os arquivos do repositório para calcular totais e pré-preencher campos.</p>
-    <div class="toolbar">
-      <button class="primary" id="btnLoadGh">Carregar do GitHub</button>
-      <span style="color:var(--muted);font-size:13px">ou</span>
-      <label style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;padding:8px 12px;cursor:pointer">
-        <span style="color:var(--muted);font-size:13px">enviar arquivos</span>
-        <input type="file" id="fileCart" accept=".json" style="display:none">
-        <button class="tiny" type="button" onclick="document.getElementById('fileCart').click()">carteira.json</button>
-        <input type="file" id="fileHist" accept=".json" style="display:none">
-        <button class="tiny" type="button" onclick="document.getElementById('fileHist').click()">historico.json</button>
-      </label>
+    <h2>Novo Aporte</h2>
+    <div id="aporteList"></div>
+    <div class="form-actions">
+      <button class="btn-add" id="btnAdd">＋ Adicionar outro aporte</button>
+      <button class="primary" id="btnRegistrar">Registrar</button>
     </div>
-    <div class="status" id="loadStatus"></div>
+    <div class="status" id="stRegistrar"></div>
   </section>
 
-  <!-- 2. REGISTRAR APORTE -->
-  <section class="card" id="aporteCard" style="display:none">
-    <h2>2. Registrar Aporte</h2>
-    <p class="sub">Preencha o formulário abaixo e clique em Registrar para adicionar ao histórico.</p>
+  <!-- HISTÓRICO -->
+  <section class="card" id="secHist" style="display:none">
+    <h2>Histórico recente</h2>
+    <div id="histList"></div>
+  </section>
 
-    <!-- Data + Valor -->
+  <p class="foot">
+    Dados ficam no seu repositório privado.<br>
+    Ferramenta de organização pessoal — as decisões de investimento são suas.
+  </p>
+</div>
+
+<script>
+// ─── utils ────────────────────────────────────────────────────────────────────
+const fmt  = n => n == null || isNaN(n) ? '—' : Number(n).toLocaleString('pt-br',{style:'currency',currency:'BRL'});
+const fmtN = (n,d=8) => n == null ? '—' : Number(n).toLocaleString('pt-br',{maximumFractionDigits:d,minimumFractionDigits:2});
+const today = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+const LS   = { get:k=>{ try{return localStorage.getItem(k)}catch{return null} }, set:(k,v)=>{ try{localStorage.setItem(k,v)}catch{} } };
+const b64enc = s => btoa(unescape(encodeURIComponent(s)));
+const b64dec = s => decodeURIComponent(escape(atob(s)));
+const q = (el,s) => el.querySelector(s);
+
+// ─── config ───────────────────────────────────────────────────────────────────
+['cfgOwner','cfgRepo','cfgBranch','cfgToken'].forEach(k => {
+  const v = LS.get('p_'+k); if(v) document.getElementById(k).value = v;
+  document.getElementById(k).addEventListener('change', () => LS.set('p_'+k, document.getElementById(k).value));
+});
+function cfg() {
+  return {
+    owner:  document.getElementById('cfgOwner').value.trim(),
+    repo:   document.getElementById('cfgRepo').value.trim(),
+    branch: document.getElementById('cfgBranch').value.trim() || 'main',
+    token:  document.getElementById('cfgToken').value.trim(),
+  };
+}
+const cfgOk = c => c.owner && c.repo && c.token;
+if(!LS.get('p_cfgToken')) document.getElementById('cfgDetails').open = true;
+
+// ─── GitHub API ───────────────────────────────────────────────────────────────
+async function ghGet(c, path) {
+  const r = await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path}?ref=${c.branch}`,
+    { headers:{ Authorization:'Bearer '+c.token, Accept:'application/vnd.github+json' } });
+  if(r.status === 404) return null;
+  if(!r.ok) throw new Error(`Erro ao ler ${path}: HTTP ${r.status}`);
+  const j = await r.json();
+  return { content: JSON.parse(b64dec(j.content.replace(/\n/g,''))), sha: j.sha };
+}
+async function ghPut(c, path, content, sha, msg) {
+  const body = { message:msg, content:b64enc(JSON.stringify(content,null,2)), branch:c.branch };
+  if(sha) body.sha = sha;
+  const r = await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path}`, {
+    method:'PUT',
+    headers:{ Authorization:'Bearer '+c.token, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+    body: JSON.stringify(body)
+  });
+  if(!r.ok) throw new Error(`Erro ao salvar ${path}: HTTP ${r.status} — ${(await r.text()).slice(0,120)}`);
+}
+
+// ─── template de item ─────────────────────────────────────────────────────────
+function itemTemplate(n) {
+  return `
+    <div class="item-header">
+      <span class="item-num">Aporte ${n}</span>
+      <button class="btn-remove" style="display:none">× remover</button>
+    </div>
+
     <div class="row">
-      <div>
-        <label>Data do aporte</label>
-        <input id="apData" type="date">
-      </div>
-      <div>
-        <label>Valor total investido (R$)</label>
-        <input class="num" id="apValor" type="number" step="0.01" min="0.01" placeholder="0,00">
-      </div>
+      <div><label>Data</label><input type="date" class="f-data"></div>
+      <div><label>Valor investido (R$)</label><input type="number" class="num f-valor" step="0.01" min="0.01" placeholder="0,00"></div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- ONDE -->
     <div>
       <label>Onde investiu</label>
-      <div class="seg-group" id="ondeGroup">
+      <div class="seg-group">
         <button class="seg" data-onde="cofrinhos_mp">Cofrinho Mercado Pago</button>
         <button class="seg" data-onde="santander">Corretora Santander</button>
         <button class="seg" data-onde="bitcoin">Mercado Bitcoin</button>
       </div>
     </div>
 
-    <!-- TIPO (aparece após selecionar ONDE) -->
-    <div id="tipoSection" style="display:none;margin-top:18px">
+    <div class="sec-tipo" style="display:none">
+      <div class="divider"></div>
       <label>Tipo de investimento</label>
-      <div class="seg-group" id="tipoGroup">
+      <div class="seg-group">
         <button class="seg" data-tipo="acao">Ação / ETF</button>
         <button class="seg" data-tipo="moeda_digital">Moeda Digital</button>
         <button class="seg" data-tipo="cdi">CDI / Renda Fixa</button>
@@ -188,617 +241,346 @@ pre{
       </div>
     </div>
 
-    <!-- ATIVO (aparece após selecionar TIPO) -->
-    <div id="ativoSection" style="display:none;margin-top:18px">
-      <label>Ativo</label>
-      <select id="ativoSelect"></select>
-      <p style="font-size:12px;color:var(--muted);margin:5px 0 0">Selecione um ativo existente ou "+ Novo ativo" para cadastrar.</p>
-    </div>
-
-    <!-- DETALHES: AÇÃO / ETF -->
-    <div id="detalheAcao" class="field-group" style="display:none">
+    <div class="sec-acao" style="display:none">
       <div class="divider"></div>
       <div class="row">
-        <div>
-          <label>Nome da ação / ETF</label>
-          <input id="acaoNome" placeholder="ex: PETR4, BOVA11, IVVB11">
-        </div>
-        <div>
-          <label>Quantidade de cotas compradas</label>
-          <input class="num" id="acaoQtd" type="number" step="1" min="1" placeholder="0">
-        </div>
+        <div><label>Nome da ação / ETF</label><input class="ac-nome" placeholder="ex: PETR4, BOVA11, IVVB11"></div>
+        <div><label>Quantidade de cotas</label><input type="number" class="num ac-qtd" step="1" min="1" placeholder="0"></div>
       </div>
-      <div id="acaoPrecoBox" class="calc-box" style="display:none">
-        <div>
-          <div class="k">Preço por cota</div>
-          <div class="v" id="acaoPreco">—</div>
-        </div>
-        <div style="text-align:right">
-          <div class="k">Valor total</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:var(--muted)" id="acaoTotal">—</div>
-        </div>
+      <div class="ac-calc calc" style="display:none">
+        <div class="calc-item"><div class="k">Preço por cota</div><div class="v ac-preco">—</div></div>
+        <div class="calc-item"><div class="k">Total</div><div class="v ac-total">—</div></div>
       </div>
     </div>
 
-    <!-- DETALHES: MOEDA DIGITAL -->
-    <div id="detalheMoeda" class="field-group" style="display:none">
+    <div class="sec-moeda" style="display:none">
       <div class="divider"></div>
       <div class="row">
         <div>
           <label>Símbolo da moeda</label>
           <div style="display:flex;gap:8px">
-            <input id="moedaSimbolo" placeholder="BTC, ETH, SOL…" value="BTC" style="flex:1">
-            <button class="tiny" id="btnBuscarCotacao" type="button">Buscar cotação</button>
+            <input class="mo-simbolo" value="BTC" placeholder="BTC, ETH, SOL…" style="flex:1">
+            <button class="tiny btn-cotacao" type="button">Buscar cotação</button>
           </div>
-          <div class="status" id="cotacaoStatus"></div>
         </div>
         <div>
           <label>Cotação atual (R$) <span class="badge">API Mercado Bitcoin</span></label>
-          <input class="num" id="moedaCotacao" type="number" step="0.01" placeholder="busque a cotação →" readonly>
+          <input type="number" class="num mo-cotacao" step="0.01" readonly placeholder="—">
         </div>
       </div>
-      <div id="moedaQtdBox" class="calc-box" style="display:none;margin-top:12px">
-        <div>
-          <div class="k">Quantidade comprada</div>
-          <div class="v" id="moedaQtdVal">—</div>
-        </div>
-        <div style="text-align:right">
-          <div class="k">Preço médio</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:var(--muted)" id="moedaCotacaoDisplay">—</div>
-        </div>
+      <div class="mo-calc calc" style="display:none">
+        <div class="calc-item"><div class="k">Quantidade comprada</div><div class="v mo-qtd">—</div></div>
+        <div class="calc-item"><div class="k">Preço pago por unidade</div><div class="v mo-porUn">—</div></div>
       </div>
-      <div class="hint" id="moedaHint" style="display:none"></div>
+      <div class="status info mo-status"></div>
     </div>
 
-    <!-- DETALHES: CDI / RENDA FIXA -->
-    <div id="detalheCdi" class="field-group" style="display:none">
+    <div class="sec-cdi" style="display:none">
       <div class="divider"></div>
-      <div>
-        <label>Nome do produto</label>
-        <input id="cdiNome" placeholder="ex: Cofrinho CDI, Tesouro Selic 2029">
-      </div>
+      <div><label>Nome do produto</label><input class="cdi-nome" placeholder="ex: Cofrinho CDI, Tesouro Selic 2029"></div>
     </div>
 
-    <!-- DETALHES: OUTRO -->
-    <div id="detalheOutro" class="field-group" style="display:none">
+    <div class="sec-outro" style="display:none">
       <div class="divider"></div>
       <div class="row">
-        <div>
-          <label>Nome do ativo</label>
-          <input id="outroNome" placeholder="ex: FII XPLG11, skins CS2">
-        </div>
-        <div>
-          <label>Tipo livre</label>
-          <input id="outroTipo" placeholder="ex: fii, fundo, skins">
-        </div>
+        <div><label>Nome do ativo</label><input class="ou-nome" placeholder="ex: FII XPLG11, skins CS2"></div>
+        <div><label>Tipo (livre)</label><input class="ou-tipo" placeholder="ex: fii, fundo, skins"></div>
       </div>
     </div>
 
-    <!-- OBS + BOTÃO (aparece após TIPO selecionado) -->
-    <div id="acaoFinal" style="display:none">
+    <div class="sec-final" style="display:none">
       <div class="divider"></div>
-      <div>
-        <label>Observação (opcional)</label>
-        <input id="apObs" placeholder="ex: aporte mensal de junho">
-      </div>
-      <div class="toolbar" style="margin-top:16px">
-        <button class="primary" id="btnRegistrar">Registrar Aporte</button>
-      </div>
-      <div class="status" id="aporteStatus"></div>
+      <div><label>Observação (opcional)</label><input class="f-obs" placeholder="ex: aporte de junho"></div>
     </div>
-  </section>
-
-  <!-- 3. HISTÓRICO -->
-  <section class="card" id="histCard" style="display:none">
-    <h2>3. Histórico recente</h2>
-    <p class="sub">Últimos aportes registrados.</p>
-    <div id="histList"></div>
-  </section>
-
-  <!-- 4. SALVAR -->
-  <section class="card" id="saveCard" style="display:none">
-    <h2>4. Salvar</h2>
-    <p class="sub">Baixe os arquivos e comite no repositório, ou use o commit direto via API do GitHub.</p>
-    <div class="grid2">
-      <div>
-        <label>carteira.json</label>
-        <pre id="outCart"></pre>
-        <div class="toolbar">
-          <button class="tiny" data-dl="cart">Baixar</button>
-          <button class="tiny" data-copy="cart">Copiar</button>
-        </div>
-      </div>
-      <div>
-        <label>historico.json</label>
-        <pre id="outHist"></pre>
-        <div class="toolbar">
-          <button class="tiny" data-dl="hist">Baixar</button>
-          <button class="tiny" data-copy="hist">Copiar</button>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="hint">Token configurado na seção "Configuração" no topo da página. Use um <b>fine-grained token</b> com <b>Contents: read + write</b> somente neste repositório.</div>
-    <div class="toolbar" style="margin-top:12px">
-      <button class="primary" id="btnCommit">Comitar no GitHub</button>
-    </div>
-    <div class="status" id="commitStatus"></div>
-  </section>
-
-  <p class="foot">
-    Dados ficam no seu repositório privado — não compartilhados com terceiros.<br>
-    Ferramenta de organização pessoal. As decisões de investimento são suas.
-  </p>
-</div>
-
-<script>
-const state = { carteira: null, historico: null };
-let selectedOnde = null;
-let selectedTipo = null;
-
-const $ = s => document.querySelector(s);
-const fmt = n => (n == null || isNaN(n)) ? '—' : Number(n).toLocaleString('pt-br', {style:'currency', currency:'BRL'});
-const fmtN = (n, dec=8) => n == null ? '—' : Number(n).toLocaleString('pt-br', {maximumFractionDigits:dec});
-const todayLocal = () => {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-};
-const safeLS = {
-  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
-  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-};
-const totalCarteira = () => (state.carteira?.ativos||[]).reduce((s,a) => s + (Number(a.valor_brl)||0), 0);
-
-// ---------- CARREGAR ----------
-
-async function loadFromGitHub() {
-  const o=$('#ghOwner').value.trim(), r=$('#ghRepo').value.trim(), b=$('#ghBranch').value.trim()||'main';
-  if(!o||!r) return setStatus('loadStatus','Preencha usuário e repositório na configuração acima.','err');
-  setStatus('loadStatus','Carregando…','');
-  const token = $('#ghToken').value.trim();
-  try {
-    if(token) {
-      // GitHub Contents API (funciona para repos privados)
-      const h = { Authorization:'Bearer '+token, Accept:'application/vnd.github+json' };
-      const apiBase = `https://api.github.com/repos/${o}/${r}/contents/`;
-      const cRes = await fetch(apiBase+$('#ghPathCart').value.trim()+`?ref=${b}`, {headers:h});
-      if(!cRes.ok) throw new Error('carteira.json: HTTP '+cRes.status);
-      state.carteira = JSON.parse(atob((await cRes.json()).content.replace(/\n/g,'')));
-      const hRes = await fetch(apiBase+$('#ghPathHist').value.trim()+`?ref=${b}`, {headers:h});
-      state.historico = hRes.ok ? JSON.parse(atob((await hRes.json()).content.replace(/\n/g,''))) : {descricao:'',registros:[]};
-    } else {
-      // Raw URL (só funciona para repos públicos)
-      const base = `https://raw.githubusercontent.com/${o}/${r}/${b}/`;
-      const cart = await fetch(base+$('#ghPathCart').value.trim(), {cache:'no-store'});
-      if(!cart.ok) throw new Error('carteira.json: '+cart.status+'. Para repositório privado, adicione o token na configuração.');
-      state.carteira = await cart.json();
-      const hist = await fetch(base+$('#ghPathHist').value.trim(), {cache:'no-store'});
-      state.historico = hist.ok ? await hist.json() : {descricao:'',registros:[]};
-    }
-    boot();
-    setStatus('loadStatus','Dados carregados do GitHub.','ok');
-  } catch(e) {
-    setStatus('loadStatus','Erro: '+e.message,'err');
-  }
+  `;
 }
 
-function readFile(input, cb) {
-  const f = input.files[0]; if(!f) return;
-  const fr = new FileReader();
-  fr.onload = () => { try{ cb(JSON.parse(fr.result)); }catch(e){ setStatus('loadStatus','JSON inválido: '+f.name,'err'); } };
-  fr.readAsText(f);
+// ─── gerenciar itens ──────────────────────────────────────────────────────────
+function addItem() {
+  const list = document.getElementById('aporteList');
+  const n = list.querySelectorAll('.aporte-item').length + 1;
+
+  const el = document.createElement('div');
+  el.className = 'aporte-item fade';
+  el.dataset.onde = '';
+  el.dataset.tipo = '';
+  el.innerHTML = itemTemplate(n);
+  q(el, '.f-data').value = today();
+
+  list.appendChild(el);
+  wireItem(el);
+  updateRemoveButtons();
 }
 
-// ---------- BOOT ----------
-
-function boot() {
-  $('#apData').value = todayLocal();
-  $('#aporteCard').style.display = 'block';
-  $('#histCard').style.display = 'block';
-  $('#saveCard').style.display = 'block';
-  selectedOnde = null; selectedTipo = null;
-  updateOnde(); updateTipo();
-  renderHistorico(); renderOutputs();
+function removeItem(el) {
+  el.remove();
+  // renumera
+  document.querySelectorAll('#aporteList .aporte-item .item-num').forEach((span,i) => {
+    span.textContent = 'Aporte '+(i+1);
+  });
+  updateRemoveButtons();
 }
 
-// ---------- FORMULÁRIO: ONDE ----------
-
-function updateOnde() {
-  document.querySelectorAll('[data-onde]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.onde === selectedOnde);
+function updateRemoveButtons() {
+  const items = document.querySelectorAll('#aporteList .aporte-item');
+  items.forEach(item => {
+    q(item, '.btn-remove').style.display = items.length > 1 ? 'inline-block' : 'none';
   });
 }
 
-// ---------- FORMULÁRIO: TIPO ----------
-
-function updateTipo() {
-  const tipoSec = $('#tipoSection');
-  const ativoSec = $('#ativoSection');
-  const final = $('#acaoFinal');
-
-  if(!selectedOnde) {
-    tipoSec.style.display = 'none';
-    ativoSec.style.display = 'none';
-    hideDetails(); final.style.display = 'none';
-    return;
-  }
-  tipoSec.style.display = 'block';
-  document.querySelectorAll('[data-tipo]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.tipo === selectedTipo);
-  });
-
-  if(!selectedTipo) {
-    ativoSec.style.display = 'none';
-    hideDetails(); final.style.display = 'none';
-    return;
-  }
-  ativoSec.style.display = 'block';
-  preencherAtivoSelect();
-  showDetail(selectedTipo);
-  final.style.display = 'block';
+// ─── eventos por item ─────────────────────────────────────────────────────────
+function wireItem(el) {
+  el.querySelectorAll('[data-onde]').forEach(b => b.onclick = () => selectOnde(el, b.dataset.onde));
+  el.querySelectorAll('[data-tipo]').forEach(b => b.onclick = () => selectTipo(el, b.dataset.tipo));
+  q(el, '.f-valor').addEventListener('input', () => { calcAcao(el); calcMoeda(el); });
+  q(el, '.ac-qtd').addEventListener('input', () => calcAcao(el));
+  q(el, '.btn-cotacao').onclick = () => buscarCotacao(el);
+  q(el, '.mo-simbolo').addEventListener('keydown', e => { if(e.key==='Enter') buscarCotacao(el); });
+  q(el, '.mo-cotacao').addEventListener('input', () => calcMoeda(el));
+  q(el, '.btn-remove').onclick = () => removeItem(el);
 }
 
-function hideDetails() {
-  ['detalheAcao','detalheMoeda','detalheCdi','detalheOutro'].forEach(id => {
-    $('#'+id).style.display = 'none';
-  });
+function selectOnde(el, v) {
+  el.dataset.onde = v; el.dataset.tipo = '';
+  el.querySelectorAll('[data-onde]').forEach(b => b.classList.toggle('on', b.dataset.onde === v));
+  el.querySelectorAll('[data-tipo]').forEach(b => b.classList.remove('on'));
+  q(el, '.sec-tipo').style.display = 'block';
+  hideDetalhes(el);
+  q(el, '.sec-final').style.display = 'none';
 }
 
-function showDetail(tipo) {
-  hideDetails();
-  const map = {acao:'detalheAcao', moeda_digital:'detalheMoeda', cdi:'detalheCdi', outro:'detalheOutro'};
-  if(map[tipo]) $('#'+map[tipo]).style.display = 'block';
+function selectTipo(el, v) {
+  el.dataset.tipo = v;
+  el.querySelectorAll('[data-tipo]').forEach(b => b.classList.toggle('on', b.dataset.tipo === v));
+  hideDetalhes(el);
+  const map = {acao:'sec-acao', moeda_digital:'sec-moeda', cdi:'sec-cdi', outro:'sec-outro'};
+  if(map[v]) q(el, '.'+map[v]).style.display = 'block';
+  q(el, '.sec-final').style.display = 'block';
 }
 
-// ---------- SELECT DE ATIVO ----------
-
-function preencherAtivoSelect() {
-  const sel = $('#ativoSelect');
-  const ativos = (state.carteira?.ativos||[]).filter(a => a.classe === selectedOnde);
-  sel.innerHTML = '';
-  const novo = document.createElement('option');
-  novo.value = 'novo'; novo.textContent = '+ Novo ativo';
-  sel.appendChild(novo);
-  ativos.forEach(a => {
-    const opt = document.createElement('option');
-    opt.value = a.id;
-    opt.textContent = a.nome + (a.valor_brl ? ' (atual: '+fmt(a.valor_brl)+')' : '');
-    sel.appendChild(opt);
-  });
-  // Atualiza campos ao trocar de ativo
-  sel.onchange = preencherCamposPorAtivo;
+function hideDetalhes(el) {
+  ['.sec-acao','.sec-moeda','.sec-cdi','.sec-outro'].forEach(s => q(el,s).style.display = 'none');
 }
 
-function preencherCamposPorAtivo() {
-  const id = $('#ativoSelect').value;
-  if(id === 'novo') return;
-  const ativo = (state.carteira?.ativos||[]).find(a => a.id === id);
-  if(!ativo) return;
-  if(selectedTipo === 'acao') $('#acaoNome').value = ativo.nome||'';
-  else if(selectedTipo === 'moeda_digital') { /* símbolo não salvo no schema, deixa o usuário preencher */ }
-  else if(selectedTipo === 'cdi') $('#cdiNome').value = ativo.nome||'';
-  else if(selectedTipo === 'outro') { $('#outroNome').value = ativo.nome||''; $('#outroTipo').value = ativo.tipo||''; }
-}
-
-// ---------- CÁLCULO: AÇÃO ----------
-
-function calcAcao() {
-  const valor = Number($('#apValor').value)||0;
-  const qtd = Number($('#acaoQtd').value)||0;
-  const box = $('#acaoPrecoBox');
+// ─── cálculos ─────────────────────────────────────────────────────────────────
+function calcAcao(el) {
+  const valor = Number(q(el,'.f-valor').value)||0;
+  const qtd   = Number(q(el,'.ac-qtd').value)||0;
+  const box   = q(el,'.ac-calc');
   if(valor > 0 && qtd > 0) {
-    $('#acaoPreco').textContent = fmt(valor/qtd);
-    $('#acaoTotal').textContent = fmt(valor);
+    q(el,'.ac-preco').textContent = fmt(valor/qtd);
+    q(el,'.ac-total').textContent = fmt(valor);
     box.style.display = 'flex';
-  } else {
-    box.style.display = 'none';
-  }
+  } else { box.style.display = 'none'; }
 }
 
-// ---------- CÁLCULO: MOEDA DIGITAL (API Mercado Bitcoin) ----------
-
-async function buscarCotacao() {
-  const simbolo = $('#moedaSimbolo').value.trim().toUpperCase();
-  if(!simbolo) return setStatus('cotacaoStatus','Informe o símbolo.','err');
-  setStatus('cotacaoStatus','Buscando…','');
+async function buscarCotacao(el) {
+  const sim  = q(el,'.mo-simbolo').value.trim().toUpperCase();
+  const stEl = q(el,'.mo-status');
+  if(!sim) { stEl.textContent='Informe o símbolo.'; stEl.className='status err'; return; }
+  stEl.textContent='Buscando cotação…'; stEl.className='status info';
   try {
-    // API pública do Mercado Bitcoin — sem autenticação necessária
-    // Documentação: https://api.mercadobitcoin.net/api/v4/
-    const r = await fetch(`https://api.mercadobitcoin.net/api/v4/tickers?symbols=${simbolo}-BRL`, {cache:'no-store'});
-    if(!r.ok) throw new Error('API retornou '+r.status);
-    const data = await r.json();
-    if(!data||!data[0]||!data[0].last) throw new Error('Símbolo não encontrado no Mercado Bitcoin. Exemplos: BTC, ETH, SOL, BNB, LTC');
-    const preco = Number(data[0].last);
-    $('#moedaCotacao').value = preco.toFixed(2);
-    setStatus('cotacaoStatus',`1 ${simbolo} = ${fmt(preco)}  ·  compra: ${fmt(Number(data[0].buy))}  ·  venda: ${fmt(Number(data[0].sell))}`,'ok');
-    calcMoeda();
-  } catch(e) {
-    setStatus('cotacaoStatus','Erro: '+e.message,'err');
-  }
+    const r = await fetch(`https://api.mercadobitcoin.net/api/v4/tickers?symbols=${sim}-BRL`,{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d = await r.json();
+    if(!d?.[0]?.last) throw new Error(`"${sim}" não encontrado. Ex: BTC, ETH, SOL`);
+    const p = Number(d[0].last);
+    q(el,'.mo-cotacao').value = p.toFixed(2);
+    stEl.textContent = `1 ${sim} = ${fmt(p)}  ·  compra: ${fmt(Number(d[0].buy))}  ·  venda: ${fmt(Number(d[0].sell))}`;
+    stEl.className = 'status ok';
+    calcMoeda(el);
+  } catch(e) { stEl.textContent='Erro: '+e.message; stEl.className='status err'; }
 }
 
-function calcMoeda() {
-  const valor = Number($('#apValor').value)||0;
-  const cotacao = Number($('#moedaCotacao').value)||0;
-  const box = $('#moedaQtdBox');
-  const hintEl = $('#moedaHint');
-  if(valor > 0 && cotacao > 0) {
-    const qtd = valor/cotacao;
-    const simbolo = $('#moedaSimbolo').value.trim().toUpperCase();
-    $('#moedaQtdVal').textContent = fmtN(qtd,8)+' '+simbolo;
-    $('#moedaCotacaoDisplay').textContent = fmt(cotacao)+'/un';
+function calcMoeda(el) {
+  const valor = Number(q(el,'.f-valor').value)||0;
+  const cot   = Number(q(el,'.mo-cotacao').value)||0;
+  const sim   = q(el,'.mo-simbolo').value.trim().toUpperCase();
+  const box   = q(el,'.mo-calc');
+  if(valor > 0 && cot > 0) {
+    q(el,'.mo-qtd').textContent   = fmtN(valor/cot,8)+' '+sim;
+    q(el,'.mo-porUn').textContent = fmt(cot);
     box.style.display = 'flex';
-    hintEl.textContent = `Com ${fmt(valor)}, você compra aproximadamente ${fmtN(qtd,8)} ${simbolo} a ${fmt(cotacao)} cada.`;
-    hintEl.style.display = 'block';
-  } else {
-    box.style.display = 'none';
-    hintEl.style.display = 'none';
-  }
+  } else { box.style.display = 'none'; }
 }
 
-// ---------- REGISTRAR APORTE ----------
+// ─── coletar dados de um item ─────────────────────────────────────────────────
+function coletarItem(el, n) {
+  const data  = q(el,'.f-data').value;
+  const valor = Number(q(el,'.f-valor').value)||0;
+  const onde  = el.dataset.onde;
+  const tipo  = el.dataset.tipo;
+  const obs   = q(el,'.f-obs').value?.trim()||'';
 
-function registrarAporte() {
-  const data = $('#apData').value;
-  const valor = Number($('#apValor').value)||0;
-  const obs = $('#apObs').value.trim();
+  if(!data)      return `Aporte ${n}: informe a data.`;
+  if(valor <= 0) return `Aporte ${n}: informe o valor.`;
+  if(!onde)      return `Aporte ${n}: selecione onde foi investido.`;
+  if(!tipo)      return `Aporte ${n}: selecione o tipo de investimento.`;
 
-  if(!data)      return setStatus('aporteStatus','Informe a data.','err');
-  if(valor <= 0) return setStatus('aporteStatus','Informe o valor do aporte.','err');
-  if(!selectedOnde) return setStatus('aporteStatus','Selecione onde foi investido.','err');
-  if(!selectedTipo) return setStatus('aporteStatus','Selecione o tipo de investimento.','err');
-
-  const antes = totalCarteira();
-  const ativoId = $('#ativoSelect').value;
-  let ativo;
-
-  if(ativoId === 'novo') {
-    ativo = criarAtivo(valor);
-    if(!ativo) return;
-    state.carteira.ativos.push(ativo);
-  } else {
-    ativo = (state.carteira.ativos||[]).find(a => a.id === ativoId);
-    if(!ativo) return setStatus('aporteStatus','Ativo não encontrado.','err');
-    const ok = aplicarAoAtivo(ativo, valor);
-    if(!ok) return;
+  if(tipo === 'acao') {
+    if(!q(el,'.ac-nome').value.trim())         return `Aporte ${n}: informe o nome da ação/ETF.`;
+    if(!(Number(q(el,'.ac-qtd').value) > 0))   return `Aporte ${n}: informe a quantidade de cotas.`;
+  }
+  if(tipo === 'moeda_digital') {
+    if(!q(el,'.mo-simbolo').value.trim())      return `Aporte ${n}: informe o símbolo da moeda.`;
+  }
+  if(tipo === 'outro') {
+    if(!q(el,'.ou-nome').value.trim())         return `Aporte ${n}: informe o nome do ativo.`;
   }
 
-  const depois = totalCarteira();
-  const dist = {};
-  dist[selectedOnde] = +valor.toFixed(2);
-
-  state.carteira.atualizado_em = data;
-  state.historico.registros = state.historico.registros||[];
-  state.historico.registros.push({
-    data,
-    tipo: 'aporte',
-    valor_aportado_brl: +valor.toFixed(2),
-    distribuicao: dist,
-    valor_carteira_antes_brl: +antes.toFixed(2),
-    valor_carteira_depois_brl: +depois.toFixed(2),
-    observacao: obs
-  });
-
-  renderHistorico(); renderOutputs();
-  setStatus('aporteStatus',`Aporte de ${fmt(valor)} em "${ativo.nome}" registrado. Salve os arquivos abaixo. ↓`,'ok');
+  return { data, valor, onde, tipo, obs, ativo: montarAtivoFromEl(el, onde, tipo, valor) };
 }
 
-function criarAtivo(valor) {
+function montarAtivoFromEl(el, onde, tipo, valor) {
   const id = 'ativo_'+Math.random().toString(36).slice(2,7);
-
-  if(selectedTipo === 'acao') {
-    const nome = $('#acaoNome').value.trim();
-    const qtd = Number($('#acaoQtd').value)||0;
-    if(!nome) return err('Informe o nome da ação/ETF.');
-    if(qtd <= 0) return err('Informe a quantidade de cotas.');
-    if(valor <= 0) return err('Informe o valor total investido.');
-    return { id, classe:selectedOnde, nome, tipo:'acao', modo_valor:'quantidade',
-      quantidade:qtd, preco_medio:+(valor/qtd).toFixed(4), valor_brl:+valor.toFixed(2), fonte:'manual' };
+  if(tipo === 'acao') {
+    const qtd = Number(q(el,'.ac-qtd').value);
+    return { id, classe:onde, nome:q(el,'.ac-nome').value.trim(), tipo:'acao',
+      modo_valor:'quantidade', quantidade:qtd, preco_medio:+(valor/qtd).toFixed(4),
+      valor_brl:+valor.toFixed(2), fonte:'manual' };
   }
-
-  if(selectedTipo === 'moeda_digital') {
-    const simbolo = $('#moedaSimbolo').value.trim().toUpperCase();
-    const cotacao = Number($('#moedaCotacao').value)||0;
-    if(!simbolo) return err('Informe o símbolo da moeda.');
-    if(valor <= 0) return err('Informe o valor total investido.');
-    const qtd = cotacao > 0 ? +(valor/cotacao).toFixed(8) : null;
-    return { id, classe:selectedOnde, nome:simbolo, tipo:'cripto',
-      modo_valor: qtd ? 'quantidade' : 'valor',
-      quantidade:qtd, preco_medio:cotacao > 0 ? +cotacao.toFixed(2) : null,
-      valor_brl:+valor.toFixed(2), fonte: cotacao > 0 ? 'mercado_bitcoin_api' : 'manual' };
+  if(tipo === 'moeda_digital') {
+    const sim = q(el,'.mo-simbolo').value.trim().toUpperCase();
+    const cot = Number(q(el,'.mo-cotacao').value)||0;
+    const qtd = cot > 0 ? +(valor/cot).toFixed(8) : null;
+    return { id, classe:onde, nome:sim, tipo:'cripto',
+      modo_valor: qtd ? 'quantidade':'valor', quantidade:qtd, preco_medio:cot||null,
+      valor_brl:+valor.toFixed(2), fonte: cot > 0 ? 'mercado_bitcoin_api':'manual' };
   }
-
-  if(selectedTipo === 'cdi') {
-    const nome = $('#cdiNome').value.trim()||'CDI';
-    if(valor <= 0) return err('Informe o valor total investido.');
-    return { id, classe:selectedOnde, nome, tipo:'renda_fixa', modo_valor:'valor',
-      quantidade:null, preco_medio:null, valor_brl:+valor.toFixed(2), fonte:'manual' };
+  if(tipo === 'cdi') {
+    return { id, classe:onde, nome:q(el,'.cdi-nome').value.trim()||'CDI', tipo:'renda_fixa',
+      modo_valor:'valor', quantidade:null, preco_medio:null,
+      valor_brl:+valor.toFixed(2), fonte:'manual' };
   }
-
-  if(selectedTipo === 'outro') {
-    const nome = $('#outroNome').value.trim();
-    const tipo = $('#outroTipo').value.trim()||'outro';
-    if(!nome) return err('Informe o nome do ativo.');
-    if(valor <= 0) return err('Informe o valor total investido.');
-    return { id, classe:selectedOnde, nome, tipo, modo_valor:'valor',
-      quantidade:null, preco_medio:null, valor_brl:+valor.toFixed(2), fonte:'manual' };
-  }
-
-  return err('Tipo de investimento não reconhecido.');
+  return { id, classe:onde, nome:q(el,'.ou-nome').value.trim(),
+    tipo:q(el,'.ou-tipo').value.trim()||'outro',
+    modo_valor:'valor', quantidade:null, preco_medio:null,
+    valor_brl:+valor.toFixed(2), fonte:'manual' };
 }
 
-function aplicarAoAtivo(ativo, valor) {
-  if(selectedTipo === 'acao') {
-    const qtd = Number($('#acaoQtd').value)||0;
-    if(qtd <= 0) return err('Informe a quantidade de cotas.');
-    const precoNovo = valor/qtd;
-    const qtdAntes = Number(ativo.quantidade)||0;
-    const vlAntes = Number(ativo.valor_brl)||0;
-    ativo.preco_medio = qtdAntes > 0
-      ? +((vlAntes+valor)/(qtdAntes+qtd)).toFixed(4)
-      : +precoNovo.toFixed(4);
-    ativo.quantidade = +(qtdAntes+qtd).toFixed(8);
-    ativo.valor_brl = +(vlAntes+valor).toFixed(2);
-    return true;
+// ─── registrar todos ──────────────────────────────────────────────────────────
+async function registrar() {
+  const c = cfg();
+  if(!cfgOk(c)) return setStatus('Configure o repositório e o token acima.','err');
+
+  const itemEls = [...document.querySelectorAll('#aporteList .aporte-item')];
+  const aportes = [];
+  for(let i=0; i<itemEls.length; i++) {
+    const r = coletarItem(itemEls[i], i+1);
+    if(typeof r === 'string') return setStatus(r,'err');
+    aportes.push(r);
   }
-  if(selectedTipo === 'moeda_digital') {
-    const cotacao = Number($('#moedaCotacao').value)||0;
-    const qtdComprada = cotacao > 0 ? valor/cotacao : 0;
-    const qtdAntes = Number(ativo.quantidade)||0;
-    const vlAntes = Number(ativo.valor_brl)||0;
-    if(cotacao > 0 && qtdComprada > 0) {
-      ativo.preco_medio = qtdAntes > 0
-        ? +((vlAntes+valor)/(qtdAntes+qtdComprada)).toFixed(4)
-        : +cotacao.toFixed(4);
-      ativo.quantidade = +(qtdAntes+qtdComprada).toFixed(8);
-      ativo.modo_valor = 'quantidade';
-      ativo.fonte = 'mercado_bitcoin_api';
-    }
-    ativo.valor_brl = +(vlAntes+valor).toFixed(2);
-    return true;
+
+  setStatus('Lendo dados do repositório…','info');
+  let carteira, carteiraSha, historico, historicoSha;
+  try {
+    const rc = await ghGet(c,'carteira.json');
+    const rh = await ghGet(c,'historico.json');
+    carteira    = rc?.content || criarCarteiraVazia();
+    carteiraSha = rc?.sha;
+    historico    = rh?.content || { descricao:'Histórico de aportes.', registros:[] };
+    historicoSha = rh?.sha;
+  } catch(e) { return setStatus('Erro ao ler do GitHub: '+e.message,'err'); }
+
+  // aplica cada aporte em sequência
+  for(const ap of aportes) {
+    const existente = carteira.ativos.find(a => a.classe===ap.onde && nomeIgual(a.nome, ap.ativo.nome));
+    if(existente) atualizarAtivo(existente, ap.ativo, ap.valor);
+    else carteira.ativos.push(ap.ativo);
+    carteira.atualizado_em = ap.data;
+
+    const antes = historico.registros.length
+      ? historico.registros[historico.registros.length-1].valor_carteira_depois_brl : 0;
+    const totalAtual = carteira.ativos.reduce((s,a)=>s+(Number(a.valor_brl)||0),0);
+    const dist = {}; dist[ap.onde] = +ap.valor.toFixed(2);
+    historico.registros.push({
+      data: ap.data, tipo:'aporte',
+      valor_aportado_brl: +ap.valor.toFixed(2),
+      distribuicao: dist,
+      valor_carteira_antes_brl: +antes.toFixed(2),
+      valor_carteira_depois_brl: +totalAtual.toFixed(2),
+      observacao: ap.obs
+    });
   }
-  if(selectedTipo === 'cdi' || selectedTipo === 'outro') {
-    ativo.valor_brl = +((Number(ativo.valor_brl)||0)+valor).toFixed(2);
-    return true;
-  }
-  return true;
+
+  setStatus('Salvando no GitHub…','info');
+  const totalVal = aportes.reduce((s,a)=>s+a.valor,0);
+  const msg = aportes.length === 1
+    ? `painel: aporte ${fmt(aportes[0].valor)} em ${aportes[0].ativo.nome} (${aportes[0].data})`
+    : `painel: ${aportes.length} aportes — ${fmt(totalVal)} (${aportes[0].data})`;
+  try {
+    await ghPut(c,'carteira.json',carteira,carteiraSha,msg);
+    await ghPut(c,'historico.json',historico,historicoSha,msg);
+  } catch(e) { return setStatus('Erro ao salvar: '+e.message,'err'); }
+
+  const plural = aportes.length > 1 ? `${aportes.length} aportes` : `aporte de ${fmt(aportes[0].valor)} em "${aportes[0].ativo.nome}"`;
+  setStatus(`✔ ${plural} registrado(s) no GitHub.`,'ok');
+  renderHistorico(historico);
+
+  // volta para um único item limpo
+  document.getElementById('aporteList').innerHTML = '';
+  addItem();
 }
 
-function err(msg) { setStatus('aporteStatus', msg, 'err'); return null; }
+// ─── helpers de domínio ───────────────────────────────────────────────────────
+function nomeIgual(a,b){ return a?.trim().toLowerCase()===b?.trim().toLowerCase(); }
 
-// ---------- HISTÓRICO ----------
-
-function renderHistorico() {
-  const list = $('#histList');
-  const reg = [...(state.historico?.registros||[])].reverse().slice(0,8);
-  if(!reg.length) {
-    list.innerHTML = '<p style="color:var(--muted);font-size:13px">Nenhum aporte registrado ainda.</p>';
-    return;
+function atualizarAtivo(existente, novo, valor) {
+  const vlAntes = Number(existente.valor_brl)||0;
+  if(existente.modo_valor==='quantidade' && novo.quantidade) {
+    const qtdAntes = Number(existente.quantidade)||0;
+    existente.preco_medio = qtdAntes > 0
+      ? +((vlAntes+valor)/(qtdAntes+novo.quantidade)).toFixed(4)
+      : novo.preco_medio;
+    existente.quantidade = +(qtdAntes+novo.quantidade).toFixed(8);
   }
+  existente.valor_brl = +(vlAntes+valor).toFixed(2);
+  existente.fonte = novo.fonte || existente.fonte;
+}
+
+function criarCarteiraVazia() {
+  return {
+    atualizado_em: today(), moeda:'BRL',
+    aporte:{ dia_do_mes:new Date().getDate(), valor_mensal_planejado:0 },
+    alocacao_alvo_pct:{ cofrinhos_mp:20, santander:40, bitcoin:35, cs2:5 },
+    ativos:[]
+  };
+}
+
+// ─── histórico ────────────────────────────────────────────────────────────────
+function renderHistorico(historico) {
+  const sec  = document.getElementById('secHist');
+  const list = document.getElementById('histList');
+  const reg  = [...(historico?.registros||[])].reverse().slice(0,8);
+  if(!reg.length){ sec.style.display='none'; return; }
+  sec.style.display = 'block';
   list.innerHTML = reg.map(r => {
-    const dist = Object.entries(r.distribuicao||{})
-      .map(([k,v]) => `${k.replace('_',' ')}: ${fmt(v)}`).join(' · ');
-    const obs = r.observacao ? ` — ${r.observacao}` : '';
-    return `<div class="hist-item">
-      <div>
-        <div>${dist}${obs}</div>
-      </div>
-      <div style="text-align:right">
-        <div class="val">${fmt(r.valor_aportado_brl)}</div>
-        <div class="date">${r.data}</div>
-      </div>
+    const dist = Object.entries(r.distribuicao||{}).map(([k,v])=>k.replace(/_/g,' ')+': '+fmt(v)).join(' · ');
+    const obs  = r.observacao ? ` — ${r.observacao}` : '';
+    return `<div class="hist-row">
+      <div><div>${dist}${obs}</div></div>
+      <div><div class="v">${fmt(r.valor_aportado_brl)}</div><div class="d">${r.data}</div></div>
     </div>`;
   }).join('');
 }
 
-// ---------- SALVAR ----------
-
-function renderOutputs() {
-  if(!state.carteira) return;
-  $('#outCart').textContent = JSON.stringify(state.carteira, null, 2);
-  $('#outHist').textContent = JSON.stringify(state.historico, null, 2);
+// ─── status global ────────────────────────────────────────────────────────────
+function setStatus(msg, cls) {
+  const el = document.getElementById('stRegistrar');
+  el.textContent=msg; el.className='status '+(cls||'');
 }
 
-function download(name, txt) {
-  const b = new Blob([txt],{type:'application/json'});
-  const u = URL.createObjectURL(b);
-  const a = document.createElement('a'); a.href=u; a.download=name; a.click(); URL.revokeObjectURL(u);
-}
+// ─── inicialização ────────────────────────────────────────────────────────────
+document.getElementById('btnAdd').onclick = addItem;
+document.getElementById('btnRegistrar').onclick = registrar;
 
-function b64(str) { return btoa(unescape(encodeURIComponent(str))); }
+addItem(); // cria o primeiro item
 
-async function commitFile(o,r,b,path,token,content,msg) {
-  const api = `https://api.github.com/repos/${o}/${r}/contents/${path}`;
-  const h = { Authorization:'Bearer '+token, Accept:'application/vnd.github+json' };
-  let sha;
-  const g = await fetch(`${api}?ref=${b}`, {headers:h});
-  if(g.ok) { sha = (await g.json()).sha; }
-  else if(g.status !== 404) throw new Error('GET '+path+': '+g.status);
-  const p = await fetch(api, {method:'PUT',headers:h,body:JSON.stringify({message:msg,content:b64(content),branch:b,sha})});
-  if(!p.ok) throw new Error('PUT '+path+': '+p.status+' '+(await p.text()).slice(0,120));
-}
-
-async function commitAll() {
-  const o=$('#ghOwner').value.trim(), r=$('#ghRepo').value.trim(),
-        b=$('#ghBranch').value.trim()||'main', t=$('#ghToken').value.trim();
-  if(!o||!r||!t) return setStatus('commitStatus','Configure usuário, repositório e token na seção de Configuração.','err');
-  setStatus('commitStatus','Comitando…','');
-  try {
-    const msg = 'painel: atualiza carteira/historico ('+(state.carteira?.atualizado_em||todayLocal())+')';
-    await commitFile(o,r,b,$('#ghPathCart').value.trim(),t,JSON.stringify(state.carteira,null,2),msg);
-    await commitFile(o,r,b,$('#ghPathHist').value.trim(),t,JSON.stringify(state.historico,null,2),msg);
-    setStatus('commitStatus','Arquivos comitados no GitHub. ✔','ok');
-  } catch(e) {
-    setStatus('commitStatus','Erro: '+e.message,'err');
-  }
-}
-
-function setStatus(id, msg, cls) {
-  const el = $('#'+id); if(!el) return;
-  el.textContent = msg; el.className = 'status '+(cls||'');
-}
-
-// ---------- EVENTOS ----------
-
-$('#btnLoadGh').onclick = loadFromGitHub;
-$('#fileCart').onchange = e => readFile(e.target, j => {
-  state.carteira = j;
-  if(state.historico) boot(); else setStatus('loadStatus','carteira.json carregado. Carregue também o historico.json.','ok');
-});
-$('#fileHist').onchange = e => readFile(e.target, j => {
-  state.historico = j;
-  if(state.carteira) boot(); else setStatus('loadStatus','historico.json carregado. Carregue também o carteira.json.','ok');
-});
-
-document.querySelectorAll('[data-onde]').forEach(btn => {
-  btn.onclick = () => {
-    selectedOnde = btn.dataset.onde;
-    selectedTipo = null;
-    updateOnde(); updateTipo();
-  };
-});
-
-document.querySelectorAll('[data-tipo]').forEach(btn => {
-  btn.onclick = () => {
-    selectedTipo = btn.dataset.tipo;
-    updateTipo();
-  };
-});
-
-$('#acaoQtd').addEventListener('input', calcAcao);
-$('#apValor').addEventListener('input', () => { calcAcao(); calcMoeda(); });
-$('#btnBuscarCotacao').onclick = buscarCotacao;
-$('#moedaCotacao').addEventListener('input', calcMoeda);
-$('#moedaSimbolo').addEventListener('keydown', e => { if(e.key==='Enter') buscarCotacao(); });
-
-$('#btnRegistrar').onclick = registrarAporte;
-$('#btnCommit').onclick = commitAll;
-
-document.addEventListener('click', e => {
-  if(e.target.dataset.dl==='cart') download('carteira.json', JSON.stringify(state.carteira,null,2));
-  if(e.target.dataset.dl==='hist') download('historico.json', JSON.stringify(state.historico,null,2));
-  if(e.target.dataset.copy) {
-    const txt = e.target.dataset.copy==='cart'
-      ? JSON.stringify(state.carteira,null,2)
-      : JSON.stringify(state.historico,null,2);
-    navigator.clipboard?.writeText(txt);
-    const orig = e.target.textContent;
-    e.target.textContent = 'Copiado!';
-    setTimeout(()=>e.target.textContent=orig, 1300);
-  }
-});
-
-// Restaura configuração salva no localStorage
-['ghOwner','ghRepo','ghBranch','ghPathCart','ghPathHist'].forEach(id => {
-  const v = safeLS.get('painel_'+id); if(v) $('#'+id).value = v;
-  $('#'+id).addEventListener('change', () => safeLS.set('painel_'+id, $('#'+id).value));
-});
-const savedToken = safeLS.get('painel_token');
-if(savedToken) $('#ghToken').value = savedToken;
-$('#ghToken').addEventListener('change', () => safeLS.set('painel_token', $('#ghToken').value));
-
-// Abre config se não estiver configurado
-if(!safeLS.get('painel_ghOwner')) $('#configDetails').open = true;
+// carrega histórico ao abrir
+(async () => {
+  const c = cfg(); if(!cfgOk(c)) return;
+  try { const rh = await ghGet(c,'historico.json'); if(rh) renderHistorico(rh.content); } catch{}
+})();
 </script>
 </body>
 </html>
